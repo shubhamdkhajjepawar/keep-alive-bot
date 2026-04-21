@@ -1,0 +1,15 @@
+name: Keep Alive API
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping API
+        run: |
+          curl -X GET https://cbre-api.onrender.com/cbre
