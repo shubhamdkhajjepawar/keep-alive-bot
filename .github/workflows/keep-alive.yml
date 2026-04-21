@@ -2,7 +2,7 @@ name: Keep Alive CBRE API
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0,5,10,15,20,26,30,35,40,45,50,55 * * * *"    
   workflow_dispatch:
 
 jobs:
@@ -10,11 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping API with retry
+      - name: Ping API
         run: |
-          echo "Starting ping..."
-          for i in 1 2 3; do
-            echo "Attempt $i"
-            curl -f -L https://cbre-api.onrender.com/cbre && break
-            sleep 5
-          done
+          echo "Pinging CBRE API..."
+          curl -f -L https://cbre-api.onrender.com/cbre
